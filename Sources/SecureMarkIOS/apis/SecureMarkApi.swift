@@ -7,29 +7,21 @@ enum address: String{
 }
 
 struct Network {
-    var server: String
-    var token: String
-    var account: String
+//    var server: String
+//    var token: String
+//    var account: String
     
-//    var session: Session?
+    static var session: Session?
     
-    init(server: String, token: String, account: String){
-        self.server = server
-        self.token = token
-        self.account = account
-//        session = Session(serverTrustManager: makeTrustManager())
-    }
-    
-    func makeTrustManager() -> ServerTrustManager{
-        let ip = server.components(separatedBy: "://")[1]
-        print(ip)
-        return ServerTrustManager(evaluators: [ip: DisabledTrustEvaluator()])
-    }
-    
-    func getProfiles(_ callBack: @escaping () -> Void){
-        if self.token.isEmpty || self.server.isEmpty { fatalError("missing argument token : \(token) base url : \(server)")}
-        let session = Session(serverTrustManager: makeTrustManager())        
-        session.request(server+address.getProfile.rawValue,
+//    init(server: String, token: String, account: String){
+//        self.server = server
+//        self.token = token
+//        self.account = account
+//    }
+        
+    static func getProfiles(server: String, token: String, account: String, _ callBack: @escaping () -> Void){
+        if token.isEmpty || server.isEmpty { fatalError("missing argument token : \(token) base url : \(server)")}
+        session?.request(server+address.getProfile.rawValue,
                               method: .post,
                               parameters: RequestProfile(data: RequestData(
                                 serviceToken: token,

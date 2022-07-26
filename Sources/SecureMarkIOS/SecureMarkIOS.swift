@@ -1,4 +1,5 @@
 import Foundation
+import Alamofire
 
 @available(macOS 10.15, iOS 13.0, *)
 public class SecureMark: ObservableObject{
@@ -10,9 +11,17 @@ public class SecureMark: ObservableObject{
 //        self.server = server
 //        self.token = token
 //        self.account = account
-        Network(server: server, token: token, account: account).getProfiles{
+        Network.session = Session(serverTrustManager: makeTrustManager(server: server))
+
+        Network.getProfiles(server: server, token: token, account: account){
             
         }
+    }
+    
+    func makeTrustManager(server: String) -> ServerTrustManager{
+        let ip = server.components(separatedBy: "://")[1]
+        print(ip)
+        return ServerTrustManager(evaluators: [ip: DisabledTrustEvaluator()])
     }
     
     public static let share = SecureMark()
