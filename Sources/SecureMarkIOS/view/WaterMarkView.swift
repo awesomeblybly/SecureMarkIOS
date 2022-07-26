@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var items: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+var items: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
 
 struct WaterMarkView: View {
     @ObservedObject var viewModel: SecureMark
@@ -18,9 +18,9 @@ struct WaterMarkView: View {
             if viewModel.profile != nil {
                 VStack {
                     ForEach(0..<5, id: \.self) { _ in
-                        LazyHStack {
+                        LazyHStack(spacing: 50) {
                             ForEach(0..<items.count, id: \.self) { vItems in
-                                VStack(spacing: 10) {
+                                VStack(spacing: 5) {
                                     Text(viewModel.profile!.markers[0].content)
                                         .font(.system(size: CGFloat(Float(viewModel.profile!.markers[0].size))))
                                         .padding(.all)
