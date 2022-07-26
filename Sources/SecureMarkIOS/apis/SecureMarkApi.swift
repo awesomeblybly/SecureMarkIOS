@@ -16,6 +16,7 @@ struct Network {
     
     func makeTrustManager() -> ServerTrustManager{
         let ip = SecureMark.server.components(separatedBy: "://")[1]
+        print(ip)
         return ServerTrustManager(evaluators: [ip: DisabledTrustEvaluator()])
     }
     
