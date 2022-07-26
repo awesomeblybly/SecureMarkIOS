@@ -18,7 +18,7 @@ struct WaterMarkView: View {
             if viewModel.profile != nil {
                 VStack {
                     ForEach(0..<5, id: \.self) { _ in
-                        LazyHStack(columns: items, spacing: 0) {
+                        LazyHStack {
                             ForEach(0..<items.count, id: \.self) { vItems in
                                 VStack {
                                     Text(viewModel.profile!.markers[0].content)
