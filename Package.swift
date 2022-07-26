@@ -8,8 +8,8 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(name: "SecureMarkIOS", targets: ["SecureMarkIOS"]),
-        .library(name: "Alamofire", targets: ["SecureMarkIOS"])
-        .library(name: "Kingfisher", targets: ["SecureMarkIOS"])
+        .library(name: "Alamofire", targets: ["Alamofire"])
+        .library(name: "Kingfisher", targets: ["Kingfisher"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
