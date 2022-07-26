@@ -6,7 +6,7 @@ import SwiftUI
 public class SecureMark: ObservableObject{
     @Published var profile: Profile?
     @Published var clientView: AnyView?
-//    @Published var profile: Profile
+    //    @Published var profile: Profile
     
     public func initialize(server: String, token: String, account: String){
         Network.session = Session(serverTrustManager: makeTrustManager(server: server))
@@ -27,7 +27,7 @@ public class SecureMark: ObservableObject{
 
 public extension View{
     public func sercureMark() -> some View {
-        SecureMark.share.clientView =  AnyView(self.body)
+        SecureMark.share.clientView =  AnyView(self) 
         return WaterMarkView(viewModel: SecureMark.share)
     }
 }
