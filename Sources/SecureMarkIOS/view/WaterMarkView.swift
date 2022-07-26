@@ -42,7 +42,7 @@ struct WaterMarkView: View {
                             }
                         }
                     }
-                }.edgesIgnoringSafeArea(.all)
+                }.ignoresSafeArea()
             }
         }
     }
