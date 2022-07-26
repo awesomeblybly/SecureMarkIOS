@@ -11,13 +11,13 @@ struct Network {
     var token: String
     var account: String
     
-    var session: Session?
+//    var session: Session?
     
     init(server: String, token: String, account: String){
         self.server = server
         self.token = token
         self.account = account
-        session = Session(serverTrustManager: makeTrustManager())
+//        session = Session(serverTrustManager: makeTrustManager())
     }
     
     func makeTrustManager() -> ServerTrustManager{
@@ -28,15 +28,15 @@ struct Network {
     
     func getProfiles(_ callBack: @escaping () -> Void){
         if self.token.isEmpty || self.server.isEmpty { fatalError("missing argument token : \(token) base url : \(server)")}
-        
-        self.session!.request(server+address.getProfile.rawValue,
-                        method: .post,
-                        parameters: RequestProfile(data: RequestData(
-                            serviceToken: token,
-                            packageName: Bundle.main.bundleIdentifier ?? "",
-                            account: account)),
-                        encoder: JSONParameterEncoder.default,
-                        headers: ["Content-Type": "application/json", "Accept": "application/json"])
+        let session = Session(serverTrustManager: makeTrustManager())
+        session.request(server+address.getProfile.rawValue,
+                              method: .post,
+                              parameters: RequestProfile(data: RequestData(
+                                serviceToken: token,
+                                packageName: Bundle.main.bundleIdentifier ?? "",
+                                account: account)),
+                              encoder: JSONParameterEncoder.default,
+                              headers: ["Content-Type": "application/json", "Accept": "application/json"])
         .validate()
         .responseDecodable(of: ResponseProfile.self){response in
             print(response)
