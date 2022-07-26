@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 import SwiftUI
 
-@available(macOS 10.15, iOS 13.0, *)
+@available(macOS 10.15, iOS 14.0, *)
 public class SecureMark: ObservableObject{
     @Published var profile: Profile?
     @Published var clientView: AnyView?
