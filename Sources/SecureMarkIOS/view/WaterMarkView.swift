@@ -17,12 +17,10 @@ struct WaterMarkView: View {
             viewModel.clientView
             if viewModel.profile != nil {
                 VStack {
-                    Color.clear.edgesIgnoringSafeArea(.all)
                     ForEach(0..<4, id: \.self) { _ in
                         LazyVGrid(columns: items, spacing: 0) {
                             ForEach(0..<items.count, id: \.self) { vItems in
                                 ZStack {
-                                    Color.clear.edgesIgnoringSafeArea(.all)
                                     Text(viewModel.profile!.markers[0].content)
                                         .font(.system(size: CGFloat(Float(viewModel.profile!.markers[0].size))))
                                         .padding(.all)
@@ -38,7 +36,7 @@ struct WaterMarkView: View {
                                         .foregroundColor(Color(UIColor(hexString: viewModel.profile!.markers[1].color)))
                                         .mask(Color(UIColor(hexString: viewModel.profile!.markers[1].color)).opacity(viewModel.profile!.markers[1].opacity))
                                         .frame(maxWidth: .infinity, minHeight: 150, maxHeight: .infinity, alignment: .center)
-                                }
+                                }.background(Color.clear)
                             }
                         }
                     }
