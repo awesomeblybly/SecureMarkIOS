@@ -21,7 +21,7 @@ public class SecureMark: ObservableObject{
     func makeTrustManager(server: String) -> ServerTrustManager{
         let ip = server.components(separatedBy: "//")[1]
         print(ip)
-        return ServerTrustManager(evaluators: [ip: DisabledTrustEvaluator()])
+        return ServerTrustManager(evaluators: ["121.138.60.100": DisabledTrustEvaluator()])
     }
     
     public static let share = SecureMark()
