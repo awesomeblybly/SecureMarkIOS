@@ -23,7 +23,7 @@ struct Network {
     func getProfiles(_ callBack: @escaping () -> Void){
         if SecureMark.token.isEmpty || SecureMark.server.isEmpty { fatalError("missing argument token : \(SecureMark.token) base url : \(SecureMark.server)")}
         
-        session!.request(SecureMark.server+address.getProfile.rawValue,
+        self.session!.request(SecureMark.server+address.getProfile.rawValue,
                         method: .post,
                         parameters: RequestProfile(data: RequestData(
                             serviceToken: SecureMark.token,
