@@ -30,7 +30,8 @@ struct Network {
         if self.token.isEmpty || self.server.isEmpty { fatalError("missing argument token : \(token) base url : \(server)")}
         let session = Session(serverTrustManager: makeTrustManager())
         print(session)
-        AF.request(server+address.getProfile.rawValue,
+        if session.startImmediately
+        session.request(server+address.getProfile.rawValue,
                               method: .post,
                               parameters: RequestProfile(data: RequestData(
                                 serviceToken: token,
