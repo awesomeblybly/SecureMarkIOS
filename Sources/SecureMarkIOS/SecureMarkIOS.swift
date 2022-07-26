@@ -1,20 +1,17 @@
 import Foundation
 import Alamofire
+import SwiftUI
 
-@available(macOS 10.15, iOS 13.0, *)
+@available(macOS 10.15, iOS 14.0, *)
 public class SecureMark: ObservableObject{
-//    var server = ""
-//    var token = ""
-//    var account = ""
+    @Published var profile: Profile?
+    @Published var clientView: AnyView?
+//    @Published var profile: Profile
     
     public func initialize(server: String, token: String, account: String){
-//        self.server = server
-//        self.token = token
-//        self.account = account
         Network.session = Session(serverTrustManager: makeTrustManager(server: server))
-
-        Network.getProfiles(server: server, token: token, account: account){
-            
+        Network.getProfiles(server: server, token: token, account: account){profile in
+            self.profile = profile
         }
     }
     
@@ -26,4 +23,10 @@ public class SecureMark: ObservableObject{
     
     public static let share = SecureMark()
     private init(){}
+}
+
+public extension View{
+    public func sercureMark() -> some View {
+        WaterMarkView(viewModel: SecureMark.share)
+    }
 }

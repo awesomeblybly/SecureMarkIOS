@@ -19,7 +19,7 @@ struct Network {
 //        self.account = account
 //    }
         
-    static func getProfiles(server: String, token: String, account: String, _ callBack: @escaping () -> Void){
+    static func getProfiles(server: String, token: String, account: String, _ callBack: @escaping (Profile) -> Void){
         if token.isEmpty || server.isEmpty { fatalError("missing argument token : \(token) base url : \(server)")}
         session?.request(server+address.getProfile.rawValue,
                               method: .post,
@@ -36,7 +36,7 @@ struct Network {
             switch (response.result) {
             case .success(let result):
                 print("Response data: \(result.data)")
-                callBack()
+                callBack(result.data.profiles)
             case .failure(let error):
                 print("Request error: \(error)")
             }
