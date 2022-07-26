@@ -30,7 +30,7 @@ struct WaterMarkView: View {
                                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                                  
                                     Text(viewModel.profile!.markers[1].content)
-                                        .offset(x: 10, y: 15)
+//                                        .offset(x: 10, y: 15)
                                         .font(.system(size: CGFloat(Float(viewModel.profile!.markers[1].size))))
                                         .padding(.all)
                                         .rotationEffect(.degrees(getDegree(pattern: viewModel.profile!.pattern)))
@@ -39,6 +39,7 @@ struct WaterMarkView: View {
                                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                                  
                                 }
+                                Spacer()
                             }
                         }
                     }
