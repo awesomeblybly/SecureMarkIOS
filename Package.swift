@@ -7,9 +7,7 @@ let package = Package(
     name: "SecureMarkIOS",
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(name: "SecureMarkIOS", targets: ["SecureMarkIOS"]),
-        .library(name: "Alamofire", targets: ["Alamofire"])
-        .library(name: "Kingfisher", targets: ["Kingfisher"])
+        .library(name: "SecureMarkIOS", targets: ["SecureMarkIOS"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -22,7 +20,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SecureMarkIOS",
-            dependencies: []),
+            dependencies: ["Alamofire","Kingfisher"]),
         .testTarget(
             name: "SecureMarkIOSTests",
             dependencies: ["SecureMarkIOS"]),
