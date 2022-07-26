@@ -15,6 +15,6 @@ public class SecureMark: ObservableObject{
         }
     }
     
-    public let share = SecureMark()
+    public static let share = SecureMark()
     private init(){}
 }
