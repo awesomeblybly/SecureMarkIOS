@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var items: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
+var items: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
 
 struct WaterMarkView: View {
     @ObservedObject var viewModel: SecureMark
