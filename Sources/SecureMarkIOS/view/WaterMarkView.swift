@@ -18,9 +18,9 @@ struct WaterMarkView: View {
             if viewModel.profile != nil {
                 VStack {
                     ForEach(0..<5, id: \.self) { _ in
-                        LazyHStack(spacing: 50) {
+                        LazyHStack(alignment:.firstTextBaseline, spacing: 50) {
                             ForEach(0..<items.count, id: \.self) { vItems in
-                                VStack(spacing: 5) {
+                                VStack(spacing: 2) {
                                     Text(viewModel.profile!.markers[0].content)
                                         .font(.system(size: CGFloat(Float(viewModel.profile!.markers[0].size))))
                                         .padding(.all)
@@ -41,7 +41,8 @@ struct WaterMarkView: View {
                                 }
                                 Spacer()
                             }
-                        }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        }
+//                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     }
                 }.ignoresSafeArea()
             }
