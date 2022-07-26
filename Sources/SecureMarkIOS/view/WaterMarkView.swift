@@ -40,7 +40,7 @@ struct WaterMarkView: View {
                                  
                                 }
                             }
-                        }.frame(minWidth: 100)
+                        }.frame(minHeight: 100)
 //                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
