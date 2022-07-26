@@ -7,28 +7,34 @@ enum address: String{
 }
 
 struct Network {
+    var server: String
+    var token: String
+    var account: String
     
     var session: Session?
     
-    init(){
+    init(server: String, token: String, account: String){
+        self.server = server
+        self.token = token
+        self.account = account
         session = Session(serverTrustManager: makeTrustManager())
     }
     
     func makeTrustManager() -> ServerTrustManager{
-        let ip = SecureMark.server.components(separatedBy: "://")[1]
+        let ip = server.components(separatedBy: "://")[1]
         print(ip)
         return ServerTrustManager(evaluators: [ip: DisabledTrustEvaluator()])
     }
     
     func getProfiles(_ callBack: @escaping () -> Void){
-        if SecureMark.token.isEmpty || SecureMark.server.isEmpty { fatalError("missing argument token : \(SecureMark.token) base url : \(SecureMark.server)")}
+        if self.token.isEmpty || self.server.isEmpty { fatalError("missing argument token : \(token) base url : \(server)")}
         
-        self.session!.request(SecureMark.server+address.getProfile.rawValue,
+        self.session!.request(server+address.getProfile.rawValue,
                         method: .post,
                         parameters: RequestProfile(data: RequestData(
-                            serviceToken: SecureMark.token,
+                            serviceToken: token,
                             packageName: Bundle.main.bundleIdentifier ?? "",
-                            account: SecureMark.account)),
+                            account: account)),
                         encoder: JSONParameterEncoder.default,
                         headers: ["Content-Type": "application/json", "Accept": "application/json"])
         .validate()
