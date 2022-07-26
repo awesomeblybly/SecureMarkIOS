@@ -28,9 +28,7 @@ struct Network {
     
     func getProfiles(_ callBack: @escaping () -> Void){
         if self.token.isEmpty || self.server.isEmpty { fatalError("missing argument token : \(token) base url : \(server)")}
-        let session = Session(serverTrustManager: makeTrustManager())
-        print(session)
-        if session.startImmediately
+        let session = Session(serverTrustManager: makeTrustManager())        
         session.request(server+address.getProfile.rawValue,
                               method: .post,
                               parameters: RequestProfile(data: RequestData(
