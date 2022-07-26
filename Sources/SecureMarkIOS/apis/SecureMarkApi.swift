@@ -3,7 +3,7 @@ import Alamofire
 
 
 enum address: String{
-    case getProfile = "v1/api/profiles"
+    case getProfile = "/v1/api/profiles"
 }
 
 struct Network {
@@ -15,7 +15,8 @@ struct Network {
     }
     
     func makeTrustManager() -> ServerTrustManager{
-        return ServerTrustManager(evaluators: [SecureMark.server: DisabledTrustEvaluator()])
+        let ip = SecureMark.server.components(separatedBy: "://")[1]
+        return ServerTrustManager(evaluators: [ip: DisabledTrustEvaluator()])
     }
     
     func getProfiles(_ callBack: @escaping () -> Void){
@@ -35,7 +36,7 @@ struct Network {
             
             switch (response.result) {
             case .success(let result):
-                print(result.data)
+                print("Response data: \(result.data)")
                 callBack()
             case .failure(let error):
                 print("Request error: \(error)")
