@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ResponseProfile{
+struct ResponseProfile: Codable{
     let common: Common
     let data: ResponseData
 }
