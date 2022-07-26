@@ -16,6 +16,7 @@ struct WaterMarkView: View {
         ZStack{
             viewModel.clientView
             if viewModel.profile != nil {
+                viewModel.clientView
                 VStack {
                     ForEach(0..<4, id: \.self) { _ in
                         LazyVGrid(columns: items, spacing: 0) {
