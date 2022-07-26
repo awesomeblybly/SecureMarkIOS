@@ -20,7 +20,7 @@ struct WaterMarkView: View {
                     ForEach(0..<5, id: \.self) { _ in
                         LazyVGrid(columns: items, spacing: 0) {
                             ForEach(0..<items.count, id: \.self) { vItems in
-                                ZStack {
+                                VStack {
                                     Text(viewModel.profile!.markers[0].content)
                                         .font(.system(size: CGFloat(Float(viewModel.profile!.markers[0].size))))
                                         .padding(.all)
