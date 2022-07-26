@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var items: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+var items: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
 
 struct WaterMarkView: View {
     @ObservedObject var viewModel: SecureMark
@@ -17,7 +17,7 @@ struct WaterMarkView: View {
             viewModel.clientView
             if viewModel.profile != nil {
                 VStack {
-                    ForEach(0..<4, id: \.self) { _ in
+                    ForEach(0..<5, id: \.self) { _ in
                         LazyVGrid(columns: items, spacing: 0) {
                             ForEach(0..<items.count, id: \.self) { vItems in
                                 ZStack {
@@ -42,7 +42,7 @@ struct WaterMarkView: View {
                             }
                         }
                     }
-                }
+                }.edgesIgnoringSafeArea(.all)
             }
         }
     }
