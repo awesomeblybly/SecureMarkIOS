@@ -14,14 +14,15 @@ struct WaterMarkView: View {
     
     var body: some View {
         ZStack{
-            Color.clear.edgesIgnoringSafeArea(.all)
             viewModel.clientView
             if viewModel.profile != nil {
                 VStack {
+                    Color.clear.edgesIgnoringSafeArea(.all)
                     ForEach(0..<4, id: \.self) { _ in
                         LazyVGrid(columns: items, spacing: 0) {
                             ForEach(0..<items.count, id: \.self) { vItems in
                                 ZStack {
+                                    Color.clear.edgesIgnoringSafeArea(.all)
                                     Text(viewModel.profile!.markers[0].content)
                                         .font(.system(size: CGFloat(Float(viewModel.profile!.markers[0].size))))
                                         .padding(.all)
@@ -51,6 +52,6 @@ struct WaterMarkView: View {
 
 //struct SwiftUIView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        WaterMarkView(viewModel: WaterMarkViewModel(view: ))
+//        WaterMarkView(viewModel: SecureMark.share)
 //    }
 //}
