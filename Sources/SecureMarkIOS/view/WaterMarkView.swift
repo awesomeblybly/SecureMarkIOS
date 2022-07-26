@@ -16,7 +16,6 @@ struct WaterMarkView: View {
         ZStack{
             viewModel.clientView
             if viewModel.profile != nil {
-                viewModel.clientView
                 VStack {
                     ForEach(0..<4, id: \.self) { _ in
                         LazyVGrid(columns: items, spacing: 0) {
@@ -29,7 +28,7 @@ struct WaterMarkView: View {
                                         .foregroundColor(Color(UIColor(hexString: viewModel.profile!.markers[0].color)))
                                         .mask(Color(UIColor(hexString: viewModel.profile!.markers[0].color)).opacity(viewModel.profile!.markers[0].opacity))
                                         .frame(maxWidth: .infinity, minHeight: 150, maxHeight: .infinity, alignment: .center)
-                                        .background(Color.clear)
+                                 
                                     Text(viewModel.profile!.markers[1].content)
                                         .offset(x: 10, y: 15)
                                         .font(.system(size: CGFloat(Float(viewModel.profile!.markers[1].size))))
@@ -38,14 +37,12 @@ struct WaterMarkView: View {
                                         .foregroundColor(Color(UIColor(hexString: viewModel.profile!.markers[1].color)))
                                         .mask(Color(UIColor(hexString: viewModel.profile!.markers[1].color)).opacity(viewModel.profile!.markers[1].opacity))
                                         .frame(maxWidth: .infinity, minHeight: 150, maxHeight: .infinity, alignment: .center)
-                                        .background(Color.clear)
-                                }.background(Color.clear)
+                                 
+                                }
                             }
-                        }.background(Color.clear)
+                        }
                     }
                 }
-                .background(Color.clear)
-                .edgesIgnoringSafeArea(.all)
             }
         }
     }
