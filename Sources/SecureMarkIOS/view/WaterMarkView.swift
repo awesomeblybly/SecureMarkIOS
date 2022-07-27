@@ -89,7 +89,7 @@ struct WaterMarkFlowingView: View {
 
 extension String{
     func multiply(_ time: Int) -> String {
-        var temp = self
+        var temp = ""
         for _ in 0...time {
             temp += "\t\t\t\t\(self)"
         }
