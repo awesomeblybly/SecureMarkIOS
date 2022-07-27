@@ -11,6 +11,7 @@ import MarqueeLabel
 
 struct WaterMarkView: View {
     @ObservedObject var viewModel: SecureMark
+    @State var isRecording = false
     
     var body: some View {
         ZStack{
@@ -23,8 +24,13 @@ struct WaterMarkView: View {
             }else if viewModel.profile?.type == "I"{
                 
             }
-            viewModel.clientView
-        }
+            if !isRecording {
+                viewModel.clientView
+            }
+        }.onReceive(NotificationCenter.default.publisher(for: UIScreen.capturedDidChangeNotification), perform: {_ in
+            isRecording = UIScreen.main.isCaptured
+            print("isRecording : \(isRecording)")
+        })
     }
 }
 
@@ -70,13 +76,13 @@ struct WaterMarkFlowingView: View {
             ForEach(0..<5) { _ in
                 VStack(spacing: 2) {
                     FlowingLabelView(
-                        text: viewModel.profile!.markers[0].content.multiply(5),
+                        text: viewModel.profile!.markers[0].content.multiply(6),
                         alpha: viewModel.profile!.markers[0].opacity,
                         color: UIColor(hexString: viewModel.profile!.markers[0].color),
                         font: UIFont(name: "AppleSDGothicNeo-Regular ",size: CGFloat(Float(viewModel.profile!.markers[0].size))))
                     
                     FlowingLabelView(
-                        text: viewModel.profile!.markers[1].content.multiply(5),
+                        text: viewModel.profile!.markers[1].content.multiply(6),
                         alpha: viewModel.profile!.markers[1].opacity,
                         color: UIColor(hexString: viewModel.profile!.markers[1].color),
                         font: UIFont(name: "AppleSDGothicNeo-Regular ",size: CGFloat(Float(viewModel.profile!.markers[0].size))))
