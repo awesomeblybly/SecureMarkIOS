@@ -36,22 +36,22 @@ extension UIColor {
 func getDegree(pattern:String)->Double{
     switch(pattern) {
     case "V":
-        return 0
-    case "H":
         return 90
+    case "H":
+        return 0
     case "D":
         return -45
     default:
-        return 0
+        return -45
     }
 }
 
 func getDegreeUiView(pattern:String)->CGAffineTransform{
     switch(pattern) {
     case "V":
-        return CGAffineTransform(rotationAngle: 0)
-    case "H":
         return CGAffineTransform(rotationAngle: .pi/2)
+    case "H":
+        return CGAffineTransform(rotationAngle: 0)
     case "D":
         return CGAffineTransform(rotationAngle: -.pi/4)
     default:

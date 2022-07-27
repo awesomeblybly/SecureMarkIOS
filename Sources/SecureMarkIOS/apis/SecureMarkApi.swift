@@ -7,18 +7,8 @@ enum address: String{
 }
 
 struct Network {
-//    var server: String
-//    var token: String
-//    var account: String
-    
     static var session: Session?
-    
-//    init(server: String, token: String, account: String){
-//        self.server = server
-//        self.token = token
-//        self.account = account
-//    }
-        
+           
     static func getProfiles(server: String, token: String, account: String, _ callBack: @escaping (Profile) -> Void){
         if token.isEmpty || server.isEmpty { fatalError("missing argument token : \(token) base url : \(server)")}
         session?.request(server+address.getProfile.rawValue,
