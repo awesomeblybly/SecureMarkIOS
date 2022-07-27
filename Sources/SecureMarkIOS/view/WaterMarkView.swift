@@ -67,7 +67,7 @@ struct WaterMarkFlowingView: View {
     
     var body: some View {
         VStack(spacing: 70) {
-            ForEach(0..<5, id: \.self) { _ in
+            ForEach(0..<5) { _ in
                 VStack(spacing: 2) {
                     FlowingLabelView(
                         text: viewModel.profile!.markers[0].content.multiply(5),
@@ -91,7 +91,7 @@ extension String{
     func multiply(_ time: Int) -> String {
         var temp = ""
         for _ in 0...time {
-            temp += "\t\t\(self)\t\t"
+            temp += "\t\t\t\(self)"
         }
         return temp
     }
