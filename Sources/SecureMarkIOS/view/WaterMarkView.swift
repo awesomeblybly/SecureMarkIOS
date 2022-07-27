@@ -56,7 +56,7 @@ struct WaterMarkTextView: View{
                                 .rotationEffect(.degrees(getDegree(pattern: viewModel.profile!.pattern)))
                                 .foregroundColor(Color(UIColor(hexString: viewModel.profile!.markers[0].color)))
                                 .mask(Color(UIColor(hexString: viewModel.profile!.markers[0].color)).opacity(viewModel.profile!.markers[0].opacity))
-                                .frame(height: .infinity)
+                                
                             
                             Text(viewModel.profile!.markers[1].content)
                             //                                        .offset(x: 10, y: 15)
@@ -65,8 +65,8 @@ struct WaterMarkTextView: View{
                                 .rotationEffect(.degrees(getDegree(pattern: viewModel.profile!.pattern)))
                                 .foregroundColor(Color(UIColor(hexString: viewModel.profile!.markers[1].color)))
                                 .mask(Color(UIColor(hexString: viewModel.profile!.markers[1].color)).opacity(viewModel.profile!.markers[1].opacity))
-                                .frame(height: .infinity)
-                        }
+                                
+                        }.frame(height: .infinity)
                     }
                 }.frame(minHeight: 150)
             }
