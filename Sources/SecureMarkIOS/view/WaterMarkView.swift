@@ -15,18 +15,25 @@ struct WaterMarkView: View {
     
     var body: some View {
         ZStack{
-            if viewModel.profile?.type == "T" {
-                if viewModel.profile!.pattern == "F" {
-                    WaterMarkFlowingView(viewModel: viewModel)
-                } else {
-                    WaterMarkTextView(viewModel: viewModel)
+            
+            if viewModel.profile?.config == "B" || viewModel.profile?.config == "W" {
+                if viewModel.profile!.type == "T" {
+                    if viewModel.profile!.pattern == "F" {
+                        WaterMarkFlowingView(viewModel: viewModel)
+                    } else {
+                        WaterMarkTextView(viewModel: viewModel)
+                    }
+                }else if viewModel.profile?.type == "I"{
+                    
                 }
-            }else if viewModel.profile?.type == "I"{
-                
             }
-            if !isRecording {
-                viewModel.clientView
-            }
+            
+            if viewModel.profile?.config == "B" || viewModel.profile?.config == "C" {
+                if !isRecording {
+                    viewModel.clientView
+                }
+            }            
+            
         }.onReceive(NotificationCenter.default.publisher(for: UIScreen.capturedDidChangeNotification), perform: {_ in
             isRecording = UIScreen.main.isCaptured
             print("isRecording : \(isRecording)")
