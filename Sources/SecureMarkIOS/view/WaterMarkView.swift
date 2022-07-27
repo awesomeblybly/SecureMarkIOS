@@ -91,7 +91,7 @@ extension String{
     func multiply(_ time: Int) -> String {
         var temp = self
         for _ in 0...time {
-            temp += "\t\t\t\t\(temp)"
+            temp += "\t\t\t\t\(self)"
         }
         return temp
     }
