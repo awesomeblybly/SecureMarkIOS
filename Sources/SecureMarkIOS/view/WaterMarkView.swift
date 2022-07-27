@@ -54,7 +54,7 @@ struct WaterMarkTextView: View{
                                 .mask(Color(UIColor(hexString: viewModel.profile!.markers[1].color)).opacity(viewModel.profile!.markers[1].opacity))
                         }
                     }
-                }.frame(minHeight: 100)
+                }.frame(minHeight: 150)
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .ignoresSafeArea()

@@ -40,9 +40,9 @@ func getDegree(pattern:String)->Double{
     case "H":
         return 0
     case "D":
-        return -45
+        return -38
     default:
-        return -45
+        return -38
     }
 }
 
