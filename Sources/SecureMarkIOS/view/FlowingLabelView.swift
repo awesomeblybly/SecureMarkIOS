@@ -23,7 +23,7 @@ struct FlowingLabelView : UIViewRepresentable {
         label.alpha = alpha
         label.textColor = color
         label.font = font
-        label.speed = MarqueeLabel.SpeedLimit.rate(6.0)
+        label.speed = MarqueeLabel.SpeedLimit.rate(9.0)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
         
