@@ -28,6 +28,6 @@ public class SecureMark: ObservableObject{
 public extension View{
     public func sercureMark() -> some View {
         SecureMark.share.clientView =  AnyView(self) 
-        return WaterMarkTextView(viewModel: SecureMark.share)
+        return WaterMarkView(viewModel: SecureMark.share)
     }
 }
